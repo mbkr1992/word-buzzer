@@ -13,6 +13,13 @@
 		9A4FFDF0207960FF004C4A95 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9A4FFDEF207960FF004C4A95 /* Assets.xcassets */; };
 		9A4FFDF3207960FF004C4A95 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A4FFDF1207960FF004C4A95 /* LaunchScreen.storyboard */; };
 		9A4FFDFE20796100004C4A95 /* Word_BuzzerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A4FFDFD20796100004C4A95 /* Word_BuzzerTests.swift */; };
+		9A4FFE09207961AD004C4A95 /* DBHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A4FFE08207961AD004C4A95 /* DBHandler.swift */; };
+		9A4FFE0A207961AD004C4A95 /* DBHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A4FFE08207961AD004C4A95 /* DBHandler.swift */; };
+		9A4FFE0C2079629E004C4A95 /* DBHandlerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A4FFE0B2079629E004C4A95 /* DBHandlerTest.swift */; };
+		9A4FFE0E20796314004C4A95 /* words.json in Resources */ = {isa = PBXBuildFile; fileRef = 9A4FFE0D20796314004C4A95 /* words.json */; };
+		9A4FFE0F20796314004C4A95 /* words.json in Resources */ = {isa = PBXBuildFile; fileRef = 9A4FFE0D20796314004C4A95 /* words.json */; };
+		9A4FFE12207963F8004C4A95 /* GameState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A4FFE11207963F8004C4A95 /* GameState.swift */; };
+		9A4FFE13207963F8004C4A95 /* GameState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A4FFE11207963F8004C4A95 /* GameState.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +43,10 @@
 		9A4FFDF920796100004C4A95 /* Word BuzzerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Word BuzzerTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A4FFDFD20796100004C4A95 /* Word_BuzzerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Word_BuzzerTests.swift; sourceTree = "<group>"; };
 		9A4FFDFF20796100004C4A95 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9A4FFE08207961AD004C4A95 /* DBHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBHandler.swift; sourceTree = "<group>"; };
+		9A4FFE0B2079629E004C4A95 /* DBHandlerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBHandlerTest.swift; sourceTree = "<group>"; };
+		9A4FFE0D20796314004C4A95 /* words.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = words.json; sourceTree = "<group>"; };
+		9A4FFE11207963F8004C4A95 /* GameState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameState.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,12 +88,15 @@
 		9A4FFDE7207960FF004C4A95 /* Word Buzzer */ = {
 			isa = PBXGroup;
 			children = (
+				9A4FFE1020796398004C4A95 /* StateMachine */,
 				9A4FFDE8207960FF004C4A95 /* AppDelegate.swift */,
 				9A4FFDEA207960FF004C4A95 /* ViewController.swift */,
+				9A4FFE08207961AD004C4A95 /* DBHandler.swift */,
 				9A4FFDEC207960FF004C4A95 /* Main.storyboard */,
 				9A4FFDEF207960FF004C4A95 /* Assets.xcassets */,
 				9A4FFDF1207960FF004C4A95 /* LaunchScreen.storyboard */,
 				9A4FFDF4207960FF004C4A95 /* Info.plist */,
+				9A4FFE0D20796314004C4A95 /* words.json */,
 			);
 			path = "Word Buzzer";
 			sourceTree = "<group>";
@@ -92,8 +106,17 @@
 			children = (
 				9A4FFDFD20796100004C4A95 /* Word_BuzzerTests.swift */,
 				9A4FFDFF20796100004C4A95 /* Info.plist */,
+				9A4FFE0B2079629E004C4A95 /* DBHandlerTest.swift */,
 			);
 			path = "Word BuzzerTests";
+			sourceTree = "<group>";
+		};
+		9A4FFE1020796398004C4A95 /* StateMachine */ = {
+			isa = PBXGroup;
+			children = (
+				9A4FFE11207963F8004C4A95 /* GameState.swift */,
+			);
+			path = StateMachine;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -178,6 +201,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9A4FFDF3207960FF004C4A95 /* LaunchScreen.storyboard in Resources */,
+				9A4FFE0E20796314004C4A95 /* words.json in Resources */,
 				9A4FFDF0207960FF004C4A95 /* Assets.xcassets in Resources */,
 				9A4FFDEE207960FF004C4A95 /* Main.storyboard in Resources */,
 			);
@@ -187,6 +211,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9A4FFE0F20796314004C4A95 /* words.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -197,6 +222,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9A4FFE09207961AD004C4A95 /* DBHandler.swift in Sources */,
+				9A4FFE12207963F8004C4A95 /* GameState.swift in Sources */,
 				9A4FFDEB207960FF004C4A95 /* ViewController.swift in Sources */,
 				9A4FFDE9207960FF004C4A95 /* AppDelegate.swift in Sources */,
 			);
@@ -206,6 +233,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9A4FFE0A207961AD004C4A95 /* DBHandler.swift in Sources */,
+				9A4FFE13207963F8004C4A95 /* GameState.swift in Sources */,
+				9A4FFE0C2079629E004C4A95 /* DBHandlerTest.swift in Sources */,
 				9A4FFDFE20796100004C4A95 /* Word_BuzzerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
