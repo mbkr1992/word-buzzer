@@ -9,7 +9,14 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    lazy var stateUserA: ContextMachine = {
+        return ContextMachine(withUser: User(name: "Swift", score: Score()))
+    }()
+    
+    lazy var stateUserB: ContextMachine = {
+        return ContextMachine(withUser: User(name: "ObjC", score: Score()))
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
