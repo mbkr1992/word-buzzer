@@ -26,6 +26,15 @@
 		9A4FFE1C20799A4D004C4A95 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A4FFE1B20799A4D004C4A95 /* User.swift */; };
 		9A4FFE1D20799A4D004C4A95 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A4FFE1B20799A4D004C4A95 /* User.swift */; };
 		9A4FFE222079A080004C4A95 /* ContextMachineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A4FFE212079A080004C4A95 /* ContextMachineTests.swift */; };
+		9A4FFE24207A369E004C4A95 /* ControlPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A4FFE23207A369E004C4A95 /* ControlPanel.swift */; };
+		9A4FFE25207A369E004C4A95 /* ControlPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A4FFE23207A369E004C4A95 /* ControlPanel.swift */; };
+		9A4FFE27207A3E6B004C4A95 /* ControlPanelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A4FFE26207A3E6B004C4A95 /* ControlPanelTests.swift */; };
+		9A4FFE29207A8D4B004C4A95 /* BuzzerForButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A4FFE28207A8D4B004C4A95 /* BuzzerForButton.swift */; };
+		9A4FFE2A207A8D4B004C4A95 /* BuzzerForButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A4FFE28207A8D4B004C4A95 /* BuzzerForButton.swift */; };
+		9A4FFE2D207A91A2004C4A95 /* ShakeAnimationForView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A4FFE2C207A91A2004C4A95 /* ShakeAnimationForView.swift */; };
+		9A4FFE2E207A91A2004C4A95 /* ShakeAnimationForView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A4FFE2C207A91A2004C4A95 /* ShakeAnimationForView.swift */; };
+		9A4FFE30207A9208004C4A95 /* RandomObjectArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A4FFE2F207A9208004C4A95 /* RandomObjectArray.swift */; };
+		9A4FFE31207A9208004C4A95 /* RandomObjectArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A4FFE2F207A9208004C4A95 /* RandomObjectArray.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +66,11 @@
 		9A4FFE1820796DC5004C4A95 /* WordGeneratorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordGeneratorTests.swift; sourceTree = "<group>"; };
 		9A4FFE1B20799A4D004C4A95 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		9A4FFE212079A080004C4A95 /* ContextMachineTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContextMachineTests.swift; sourceTree = "<group>"; };
+		9A4FFE23207A369E004C4A95 /* ControlPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlPanel.swift; sourceTree = "<group>"; };
+		9A4FFE26207A3E6B004C4A95 /* ControlPanelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlPanelTests.swift; sourceTree = "<group>"; };
+		9A4FFE28207A8D4B004C4A95 /* BuzzerForButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuzzerForButton.swift; sourceTree = "<group>"; };
+		9A4FFE2C207A91A2004C4A95 /* ShakeAnimationForView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShakeAnimationForView.swift; sourceTree = "<group>"; };
+		9A4FFE2F207A9208004C4A95 /* RandomObjectArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomObjectArray.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,12 +112,12 @@
 		9A4FFDE7207960FF004C4A95 /* Word Buzzer */ = {
 			isa = PBXGroup;
 			children = (
+				9A4FFE2B207A9181004C4A95 /* Extension */,
 				9A4FFE1A20799A36004C4A95 /* Model */,
 				9A4FFE1420796D1E004C4A95 /* WordGenerator */,
 				9A4FFE1020796398004C4A95 /* StateMachine */,
 				9A4FFDE8207960FF004C4A95 /* AppDelegate.swift */,
 				9A4FFDEA207960FF004C4A95 /* ViewController.swift */,
-				9A4FFE08207961AD004C4A95 /* DBHandler.swift */,
 				9A4FFDEC207960FF004C4A95 /* Main.storyboard */,
 				9A4FFDEF207960FF004C4A95 /* Assets.xcassets */,
 				9A4FFDF1207960FF004C4A95 /* LaunchScreen.storyboard */,
@@ -121,6 +135,7 @@
 				9A4FFE0B2079629E004C4A95 /* DBHandlerTests.swift */,
 				9A4FFE1820796DC5004C4A95 /* WordGeneratorTests.swift */,
 				9A4FFE212079A080004C4A95 /* ContextMachineTests.swift */,
+				9A4FFE26207A3E6B004C4A95 /* ControlPanelTests.swift */,
 			);
 			path = "Word BuzzerTests";
 			sourceTree = "<group>";
@@ -144,9 +159,21 @@
 		9A4FFE1A20799A36004C4A95 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				9A4FFE08207961AD004C4A95 /* DBHandler.swift */,
 				9A4FFE1B20799A4D004C4A95 /* User.swift */,
+				9A4FFE23207A369E004C4A95 /* ControlPanel.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		9A4FFE2B207A9181004C4A95 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				9A4FFE28207A8D4B004C4A95 /* BuzzerForButton.swift */,
+				9A4FFE2C207A91A2004C4A95 /* ShakeAnimationForView.swift */,
+				9A4FFE2F207A9208004C4A95 /* RandomObjectArray.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -253,8 +280,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				9A4FFE1620796D32004C4A95 /* WordGenerator.swift in Sources */,
+				9A4FFE29207A8D4B004C4A95 /* BuzzerForButton.swift in Sources */,
 				9A4FFE09207961AD004C4A95 /* DBHandler.swift in Sources */,
+				9A4FFE24207A369E004C4A95 /* ControlPanel.swift in Sources */,
 				9A4FFE1C20799A4D004C4A95 /* User.swift in Sources */,
+				9A4FFE30207A9208004C4A95 /* RandomObjectArray.swift in Sources */,
+				9A4FFE2D207A91A2004C4A95 /* ShakeAnimationForView.swift in Sources */,
 				9A4FFE12207963F8004C4A95 /* ContextMachine.swift in Sources */,
 				9A4FFDEB207960FF004C4A95 /* ViewController.swift in Sources */,
 				9A4FFDE9207960FF004C4A95 /* AppDelegate.swift in Sources */,
@@ -268,11 +299,16 @@
 				9A4FFE1720796D32004C4A95 /* WordGenerator.swift in Sources */,
 				9A4FFE222079A080004C4A95 /* ContextMachineTests.swift in Sources */,
 				9A4FFE1920796DC5004C4A95 /* WordGeneratorTests.swift in Sources */,
+				9A4FFE25207A369E004C4A95 /* ControlPanel.swift in Sources */,
 				9A4FFE0A207961AD004C4A95 /* DBHandler.swift in Sources */,
+				9A4FFE2A207A8D4B004C4A95 /* BuzzerForButton.swift in Sources */,
 				9A4FFE13207963F8004C4A95 /* ContextMachine.swift in Sources */,
 				9A4FFE0C2079629E004C4A95 /* DBHandlerTests.swift in Sources */,
+				9A4FFE31207A9208004C4A95 /* RandomObjectArray.swift in Sources */,
 				9A4FFDFE20796100004C4A95 /* Word_BuzzerTests.swift in Sources */,
+				9A4FFE27207A3E6B004C4A95 /* ControlPanelTests.swift in Sources */,
 				9A4FFE1D20799A4D004C4A95 /* User.swift in Sources */,
+				9A4FFE2E207A91A2004C4A95 /* ShakeAnimationForView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
