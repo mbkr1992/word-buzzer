@@ -112,7 +112,7 @@ class ContextMachine {
         self.localState = UserAnsweredWrong(user: user)
     }
     
-    func changeStateToUserAnswerRight(user: User) {
+    func changeStateToUserAnsweredRight(user: User) {
         self.localState = UserAnswerRight(user: user)
     }
 }

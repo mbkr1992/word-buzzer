@@ -9,27 +9,37 @@
 import XCTest
 
 class ContextMachineTests: XCTestCase {
-    
+    var context: ContextMachine!
     override func setUp() {
         super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        let user = User(name: "Swift", score: Score())
+        self.context = ContextMachine(withUser: user)
     }
     
     override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        self.context = nil
         super.tearDown()
     }
     
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testChangeToUserNotAnswered() {
+        let user = User(name: "Swift", score: Score(totalRight: 1, totalWrong: 2))
+        self.context.changeStateToUserNotAnswered(user: user)
+        XCTAssertTrue(self.context.state.getScore() == Score(totalRight: 1, totalWrong: 2), "Should not change the score")
+        XCTAssertTrue(self.context.state.getMessage() == nil)
     }
     
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+    func testChangeToUserAnsweredRight() {
+        let user = User(name: "Swift", score: Score(totalRight: 1, totalWrong: 2))
+        self.context.changeStateToUserAnsweredRight(user: user)
+        XCTAssertTrue(self.context.state.getScore() == Score(totalRight: 2, totalWrong: 2), "total right answers should be incremented")
+        XCTAssertTrue(self.context.state.getMessage() == nil)
+    }
+    
+    func testChangeToUserAnsweredWrong() {
+        let user = User(name: "Swift", score: Score(totalRight: 1, totalWrong: 2))
+        self.context.changeStateToUserAnsweredWrong(user: user)
+        XCTAssertTrue(self.context.state.getScore() == Score(totalRight: 1, totalWrong: 3), "total wrong answers should be incremented")
+        XCTAssertTrue(self.context.state.getMessage() == nil)
     }
     
 }

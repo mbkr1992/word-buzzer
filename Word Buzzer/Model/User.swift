@@ -8,13 +8,17 @@
 
 import Foundation
 
-struct Score {
+struct Score: Equatable {
     var totalRight: Int
     var totalWrong: Int
     
     init(totalRight: Int = 0, totalWrong: Int = 0) {
         self.totalRight = totalRight
         self.totalWrong = totalWrong
+    }
+    
+    static func == (lhs: Score, rhs: Score) -> Bool {
+        return lhs.totalRight == rhs.totalRight && lhs.totalWrong == rhs.totalWrong
     }
 }
 
