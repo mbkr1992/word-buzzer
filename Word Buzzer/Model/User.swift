@@ -22,9 +22,14 @@ struct Score: Equatable {
     }
 }
 
-struct User {
+struct User: Equatable {
+    public private(set) var id: Int
     var name: String
     var score: Score
+    
+    static func == (lhs: User, rhs: User) -> Bool {
+        return lhs.id == rhs.id && lhs.id == rhs.id
+    }
 }
 
 

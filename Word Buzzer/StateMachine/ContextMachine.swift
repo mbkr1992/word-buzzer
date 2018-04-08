@@ -8,9 +8,31 @@
 
 import Foundation
 
+enum StateEnum {
+    case gameStarted
+    case roundStarted
+    case userNotAnswered
+    case userAnsweredWrong
+    case userAnsweredRight
+    
+    func value(forState state: GameStateProtocol) -> StateEnum {
+        if state is RoundStarted {
+            return StateEnum.roundStarted
+        } else if state is UserNotAnswered {
+            return StateEnum.userNotAnswered
+        } else if state is UserAnsweredWrong {
+            return StateEnum.userAnsweredWrong
+        } else if state is UserAnsweredRight {
+            return StateEnum.userAnsweredRight
+        }
+        return StateEnum.gameStarted
+    }
+}
+
 protocol GameStateProtocol {
     func getMessage() -> String?
-    func getScore() -> Score
+    func getUser() -> User
+    func getState() -> StateEnum
 }
 
 extension GameStateProtocol {
@@ -18,8 +40,12 @@ extension GameStateProtocol {
         return nil
     }
     
-    func getScore() -> Score {
-        return Score(totalRight: 0, totalWrong: 0)
+    func getUser() -> User {
+        return User(id: 0, name: "", score: Score())
+    }
+    
+    func getState() -> StateEnum {
+        return StateEnum.gameStarted
     }
 }
 
@@ -35,8 +61,33 @@ struct GameStarted: GameStateProtocol {
         return nil
     }
     
-    func getScore() -> Score {
-        return self.user.score
+    func getUser() -> User {
+        return self.user
+    }
+    
+    func getState() -> StateEnum {
+        return StateEnum.gameStarted
+    }
+}
+
+struct RoundStarted: GameStateProtocol {
+    private var user: User!
+    
+    init(user: User) {
+        self.user = user
+    }
+    
+    func getMessage() -> String? {
+        // no score update, go back to start state
+        return "Round started"
+    }
+    
+    func getUser() -> User {
+        return self.user
+    }
+    
+    func getState() -> StateEnum {
+        return StateEnum.roundStarted
     }
 }
 
@@ -49,11 +100,15 @@ struct UserNotAnswered: GameStateProtocol {
     
     func getMessage() -> String? {
         // no score update, go back to start state
-        return nil
+        return "\(self.user.name) passed the question."
     }
     
-    func getScore() -> Score {
-        return self.user.score
+    func getUser() -> User {
+        return self.user
+    }
+    
+    func getState() -> StateEnum {
+        return StateEnum.userNotAnswered
     }
 }
 
@@ -67,15 +122,19 @@ struct UserAnsweredWrong: GameStateProtocol {
     
     func getMessage() -> String? {
         // negative score update, go back to start state
-        return nil
+        return "\(self.user.name) answered wrongly."
     }
     
-    func getScore() -> Score {
-        return self.user.score
+    func getUser() -> User {
+        return self.user
+    }
+    
+    func getState() -> StateEnum {
+        return StateEnum.userAnsweredWrong
     }
 }
 
-struct UserAnswerRight: GameStateProtocol {
+struct UserAnsweredRight: GameStateProtocol {
     private var user: User!
     
     init(user: User) {
@@ -85,11 +144,15 @@ struct UserAnswerRight: GameStateProtocol {
     
     func getMessage() -> String? {
         // positive score update, go back to start state
-        return nil
+        return "\(self.user.name) answered correctly."
     }
     
-    func getScore() -> Score {
-        return self.user.score
+    func getUser() -> User {
+        return self.user
+    }
+    
+    func getState() -> StateEnum {
+        return StateEnum.userAnsweredRight
     }
 }
 
@@ -104,15 +167,19 @@ class ContextMachine {
         return localState
     }
     
-    func changeStateToUserNotAnswered(user: User) {
-        self.localState = UserNotAnswered(user: user)
+    func changeStateToRoundStarted(user: User) {
+        self.localState = RoundStarted(user: user)
     }
     
-    func changeStateToUserAnsweredWrong(user: User) {
-        self.localState = UserAnsweredWrong(user: user)
+    func changeStateToNotAnswered(forUser: User) {
+        self.localState = UserNotAnswered(user: forUser)
     }
     
-    func changeStateToUserAnsweredRight(user: User) {
-        self.localState = UserAnswerRight(user: user)
+    func changeStateToAnsweredWrong(forUser: User) {
+        self.localState = UserAnsweredWrong(user: forUser)
+    }
+    
+    func changeStateToAnsweredRight(forUser: User) {
+        self.localState = UserAnsweredRight(user: forUser)
     }
 }
