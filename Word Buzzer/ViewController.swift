@@ -101,7 +101,7 @@ class ViewController: UIViewController {
                 break
             case .userAnsweredWrong:
                 self.newRound()
-                
+                self.view.shakeView()
                 break
             case .roundStarted, .userNotAnswered:
                 self.continueRound()
@@ -130,7 +130,7 @@ class ViewController: UIViewController {
             self.controlPanel.changeStateToAnsweredRight(forUser: self.userAlpha)
         } else {
             self.controlPanel.changeStateToAnsweredWrong(forUser: self.userAlpha)
-            self.buzzerForUserAlpha.shake()
+//            self.buzzerForUserAlpha.shake()
         }
     }
     
@@ -144,10 +144,11 @@ class ViewController: UIViewController {
             self.controlPanel.changeStateToAnsweredRight(forUser: self.userBeta)
         } else {
             self.controlPanel.changeStateToAnsweredWrong(forUser: self.userBeta)
-            self.buzzerForUserBeta.shake()
+//            self.buzzerForUserBeta.shake()
         }
     }
     
+    @IBOutlet weak var dismissGameController: UIButton!
     func checkAnswer(wordOne: Dictionary<String, String>, wordTwo: Dictionary<String, String>) -> Bool {
         return wordOne["text_eng"] == wordTwo["text_eng"]
     }
@@ -214,20 +215,5 @@ class ViewController: UIViewController {
         
         self.wordTwo.translatesAutoresizingMaskIntoConstraints = false
     }
-    
-    func deactivateButtons() {
-        self.buzzerForUserAlpha.isEnabled = false
-        self.buzzerForUserAlpha.alpha = 0.1
-        self.buzzerForUserBeta.isEnabled = false
-        self.buzzerForUserBeta.alpha = 0.1
-    }
-    
-    func activateButtons() {
-        self.buzzerForUserAlpha.isEnabled = true
-        self.buzzerForUserAlpha.alpha = 1.0
-        self.buzzerForUserBeta.isEnabled = true
-        self.buzzerForUserBeta.alpha = 1.0
-    }
-    
 }
 

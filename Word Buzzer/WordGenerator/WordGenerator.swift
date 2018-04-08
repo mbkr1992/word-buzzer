@@ -39,7 +39,7 @@ class WordGenerator {
     
     func reset() {
         self.current = 0
-    }
+    }    
     
     func wrongWords(range: ClosedRange<Int>) -> Array<BabbelWord>? {
         let selectedWords = self.words[range]

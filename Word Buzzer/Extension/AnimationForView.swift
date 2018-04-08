@@ -11,9 +11,19 @@ import UIKit
 extension UIView {
     func shake() {
         self.transform = CGAffineTransform(translationX: 20, y: 0)
-        UIView.animate(withDuration: 0.4, delay: 0, usingSpringWithDamping: 0.2, initialSpringVelocity: 1, options: .curveEaseInOut, animations: {
+        UIView.animate(withDuration: 0.4, delay: 0, usingSpringWithDamping: 0.3, initialSpringVelocity: 1, options: .curveEaseInOut, animations: {
             self.transform = CGAffineTransform.identity
         }, completion: nil)
+    }
+    
+    func shakeView() {
+        let shakeAnimation = CABasicAnimation(keyPath: "position")
+        shakeAnimation.duration = 0.07
+        shakeAnimation.repeatCount = 3
+        shakeAnimation.autoreverses = true
+        shakeAnimation.fromValue = CGPoint(x: self.center.x - 10, y: self.center.y)
+        shakeAnimation.toValue = CGPoint(x: self.center.x + 10, y: self.center.y)
+        self.layer.add(shakeAnimation, forKey: "position")
     }
 }
 

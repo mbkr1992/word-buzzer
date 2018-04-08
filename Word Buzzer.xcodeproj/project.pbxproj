@@ -31,8 +31,8 @@
 		9A4FFE27207A3E6B004C4A95 /* ControlPanelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A4FFE26207A3E6B004C4A95 /* ControlPanelTests.swift */; };
 		9A4FFE29207A8D4B004C4A95 /* BuzzerForButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A4FFE28207A8D4B004C4A95 /* BuzzerForButton.swift */; };
 		9A4FFE2A207A8D4B004C4A95 /* BuzzerForButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A4FFE28207A8D4B004C4A95 /* BuzzerForButton.swift */; };
-		9A4FFE2D207A91A2004C4A95 /* ShakeAnimationForView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A4FFE2C207A91A2004C4A95 /* ShakeAnimationForView.swift */; };
-		9A4FFE2E207A91A2004C4A95 /* ShakeAnimationForView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A4FFE2C207A91A2004C4A95 /* ShakeAnimationForView.swift */; };
+		9A4FFE2D207A91A2004C4A95 /* AnimationForView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A4FFE2C207A91A2004C4A95 /* AnimationForView.swift */; };
+		9A4FFE2E207A91A2004C4A95 /* AnimationForView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A4FFE2C207A91A2004C4A95 /* AnimationForView.swift */; };
 		9A4FFE30207A9208004C4A95 /* RandomObjectArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A4FFE2F207A9208004C4A95 /* RandomObjectArray.swift */; };
 		9A4FFE31207A9208004C4A95 /* RandomObjectArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A4FFE2F207A9208004C4A95 /* RandomObjectArray.swift */; };
 /* End PBXBuildFile section */
@@ -69,7 +69,7 @@
 		9A4FFE23207A369E004C4A95 /* ControlPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlPanel.swift; sourceTree = "<group>"; };
 		9A4FFE26207A3E6B004C4A95 /* ControlPanelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlPanelTests.swift; sourceTree = "<group>"; };
 		9A4FFE28207A8D4B004C4A95 /* BuzzerForButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuzzerForButton.swift; sourceTree = "<group>"; };
-		9A4FFE2C207A91A2004C4A95 /* ShakeAnimationForView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShakeAnimationForView.swift; sourceTree = "<group>"; };
+		9A4FFE2C207A91A2004C4A95 /* AnimationForView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationForView.swift; sourceTree = "<group>"; };
 		9A4FFE2F207A9208004C4A95 /* RandomObjectArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomObjectArray.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -170,7 +170,7 @@
 			isa = PBXGroup;
 			children = (
 				9A4FFE28207A8D4B004C4A95 /* BuzzerForButton.swift */,
-				9A4FFE2C207A91A2004C4A95 /* ShakeAnimationForView.swift */,
+				9A4FFE2C207A91A2004C4A95 /* AnimationForView.swift */,
 				9A4FFE2F207A9208004C4A95 /* RandomObjectArray.swift */,
 			);
 			path = Extension;
@@ -285,7 +285,7 @@
 				9A4FFE24207A369E004C4A95 /* ControlPanel.swift in Sources */,
 				9A4FFE1C20799A4D004C4A95 /* User.swift in Sources */,
 				9A4FFE30207A9208004C4A95 /* RandomObjectArray.swift in Sources */,
-				9A4FFE2D207A91A2004C4A95 /* ShakeAnimationForView.swift in Sources */,
+				9A4FFE2D207A91A2004C4A95 /* AnimationForView.swift in Sources */,
 				9A4FFE12207963F8004C4A95 /* ContextMachine.swift in Sources */,
 				9A4FFDEB207960FF004C4A95 /* ViewController.swift in Sources */,
 				9A4FFDE9207960FF004C4A95 /* AppDelegate.swift in Sources */,
@@ -308,7 +308,7 @@
 				9A4FFDFE20796100004C4A95 /* Word_BuzzerTests.swift in Sources */,
 				9A4FFE27207A3E6B004C4A95 /* ControlPanelTests.swift in Sources */,
 				9A4FFE1D20799A4D004C4A95 /* User.swift in Sources */,
-				9A4FFE2E207A91A2004C4A95 /* ShakeAnimationForView.swift in Sources */,
+				9A4FFE2E207A91A2004C4A95 /* AnimationForView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
