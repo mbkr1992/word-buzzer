@@ -10,6 +10,7 @@ import Foundation
 
 enum StateEnum {
     case gameStarted
+    case gameEnded
     case roundStarted
     case userNotAnswered
     case userAnsweredWrong
@@ -24,14 +25,16 @@ enum StateEnum {
             return StateEnum.userAnsweredWrong
         } else if state is UserAnsweredRight {
             return StateEnum.userAnsweredRight
+        } else if state is GameStarted {
+            return StateEnum.gameStarted
         }
-        return StateEnum.gameStarted
+        return StateEnum.gameEnded
     }
 }
 
 protocol GameStateProtocol {
     func getMessage() -> String?
-    func getUser() -> User
+    func getUser() -> User?
     func getState() -> StateEnum
 }
 
@@ -50,9 +53,9 @@ extension GameStateProtocol {
 }
 
 struct GameStarted: GameStateProtocol {
-    private var user: User!
+    private var user: User?
     
-    init(user: User) {
+    init(user: User?) {
         self.user = user
     }
     
@@ -61,7 +64,7 @@ struct GameStarted: GameStateProtocol {
         return nil
     }
     
-    func getUser() -> User {
+    func getUser() -> User? {
         return self.user
     }
     
@@ -70,10 +73,31 @@ struct GameStarted: GameStateProtocol {
     }
 }
 
-struct RoundStarted: GameStateProtocol {
-    private var user: User!
+struct GameEnded: GameStateProtocol {
+    private var user: User?
     
-    init(user: User) {
+    init(user: User?) {
+        self.user = user
+    }
+    
+    func getMessage() -> String? {
+        // no score update, go back to start state
+        return nil
+    }
+    
+    func getUser() -> User? {
+        return self.user
+    }
+    
+    func getState() -> StateEnum {
+        return StateEnum.gameEnded
+    }
+}
+
+struct RoundStarted: GameStateProtocol {
+    private var user: User?
+    
+    init(user: User?) {
         self.user = user
     }
     
@@ -82,7 +106,7 @@ struct RoundStarted: GameStateProtocol {
         return "Round started"
     }
     
-    func getUser() -> User {
+    func getUser() -> User? {
         return self.user
     }
     
@@ -92,18 +116,18 @@ struct RoundStarted: GameStateProtocol {
 }
 
 struct UserNotAnswered: GameStateProtocol {
-    private var user: User!
+    private var user: User?
     
-    init(user: User) {
+    init(user: User?) {
         self.user = user
     }
     
     func getMessage() -> String? {
         // no score update, go back to start state
-        return "\(self.user.name) passed the question."
+        return "User passed the question."
     }
     
-    func getUser() -> User {
+    func getUser() -> User? {
         return self.user
     }
     
@@ -125,7 +149,7 @@ struct UserAnsweredWrong: GameStateProtocol {
         return "\(self.user.name) answered wrongly."
     }
     
-    func getUser() -> User {
+    func getUser() -> User? {
         return self.user
     }
     
@@ -147,7 +171,7 @@ struct UserAnsweredRight: GameStateProtocol {
         return "\(self.user.name) answered correctly."
     }
     
-    func getUser() -> User {
+    func getUser() -> User? {
         return self.user
     }
     
@@ -167,12 +191,16 @@ class ContextMachine {
         return localState
     }
     
-    func changeStateToRoundStarted(user: User) {
-        self.localState = RoundStarted(user: user)
+    func changeStateToGameEnded() {
+        self.localState = GameEnded(user: nil)
     }
     
-    func changeStateToNotAnswered(forUser: User) {
-        self.localState = UserNotAnswered(user: forUser)
+    func changeStateToRoundStarted() {
+        self.localState = RoundStarted(user: nil)
+    }
+    
+    func changeStateToNotAnswered() {
+        self.localState = UserNotAnswered(user: nil)
     }
     
     func changeStateToAnsweredWrong(forUser: User) {
