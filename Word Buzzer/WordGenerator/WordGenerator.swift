@@ -23,7 +23,7 @@ class WordGenerator {
     func next() -> (BabbelWord, Array<BabbelWord>)? {
         print("next: \(self.current!)")
         var result: (BabbelWord, Array<BabbelWord>)?
-        if self.words.count == self.current {
+        if self.words.count == self.current || self.limit >= self.words.count {
             return nil
         }
         
