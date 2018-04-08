@@ -184,20 +184,13 @@ class ViewController: UIViewController {
         self.buzzerForUserAlpha.activate()
         self.buzzerForUserBeta.activate()
         self.wordTwo.randomMovement(rect: self.view.frame) { (animated: Bool) in
-            
+            if animated {
+                if self.buzzerPressed == false {
+                    self.currentPassingWord = self.currentWords?.randomObject()
+                    self.controlPanel.changeStateToNotAnswered()
+                }
+            }
         }
-        
-//        UIView.animate(withDuration: 2.0, animations: {
-//            self.wordTwo.alpha = 1.0
-//        }) { (animated: Bool) in
-//            if animated {
-//                self.wordTwo.alpha = 0.0
-//                if self.buzzerPressed == false {
-//                    self.currentPassingWord = self.currentWords?.randomObject()
-//                    self.controlPanel.changeStateToNotAnswered()
-//                }
-//            }
-//        }
     }
     
     func updateUser(withUser user: User) {
@@ -218,6 +211,8 @@ class ViewController: UIViewController {
         self.userBeta = User(id: 2, name: "ObjC", score: Score())
         self.totalRounds = 10
         self.currentRound = 0
+        
+        self.wordTwo.translatesAutoresizingMaskIntoConstraints = false
     }
     
     func deactivateButtons() {

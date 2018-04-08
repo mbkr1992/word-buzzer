@@ -24,8 +24,9 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fye-9i-meU">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="-" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fye-9i-meU">
                                 <rect key="frame" x="182" y="374" width="11" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <color key="textColor" red="0.35477847785852012" green="0.36716264783903102" blue="0.47523397842639592" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -89,7 +90,6 @@
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Zna-WG-8gr" secondAttribute="trailing" constant="16" id="3zl-Yi-25i"/>
                             <constraint firstItem="Zna-WG-8gr" firstAttribute="top" secondItem="kxi-cg-gQv" secondAttribute="bottom" constant="80" id="5ff-8G-abB"/>
-                            <constraint firstItem="Fye-9i-meU" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="CMb-k7-aXa"/>
                             <constraint firstItem="oyH-q5-7Co" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="CVa-hH-Cfv"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Xff-PW-diG" secondAttribute="bottom" constant="20" id="DI5-7h-ITC"/>
                             <constraint firstItem="qVc-ag-7I3" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="GQk-R8-QY2"/>
@@ -97,7 +97,6 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Zna-WG-8gr" secondAttribute="bottom" constant="20" id="N3Q-ra-b6f"/>
                             <constraint firstItem="qVc-ag-7I3" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="60" id="SJm-tV-RHd"/>
                             <constraint firstItem="ioG-KI-R6D" firstAttribute="top" secondItem="oyH-q5-7Co" secondAttribute="bottom" constant="20" id="T5j-j3-qmh"/>
-                            <constraint firstItem="Fye-9i-meU" firstAttribute="top" secondItem="ioG-KI-R6D" secondAttribute="bottom" constant="20" id="Wpr-3Z-fKJ"/>
                             <constraint firstItem="4TS-nW-ojs" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="WwG-Dm-88Y"/>
                             <constraint firstItem="ioG-KI-R6D" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="xVh-Cb-D2u"/>
                             <constraint firstItem="ioG-KI-R6D" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="xhF-Js-bVh"/>
