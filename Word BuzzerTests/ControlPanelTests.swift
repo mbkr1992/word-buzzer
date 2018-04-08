@@ -28,45 +28,45 @@ class ControlPanelTests: XCTestCase {
     }
     
     func testStateChangedForRoundStarted() {
-        self.controlPanel.stateChanged = { [weak self] (state: StateEnum, user: User) in
+        self.controlPanel.stateChanged = { [weak self] (state: StateEnum, user: User?) in
             switch state {
             case .roundStarted:
                 if (self?.userA == user) {
-                    XCTAssertTrue(self?.userA.score.totalRight == user.score.totalRight, "Round started should not effect user's state")
-                    XCTAssertTrue(self?.userA.score.totalWrong == user.score.totalWrong, "Round started should not effect user's state")
+                    XCTAssertTrue(self?.userA.score.totalRight == user?.score.totalRight, "Round started should not effect user's state")
+                    XCTAssertTrue(self?.userA.score.totalWrong == user?.score.totalWrong, "Round started should not effect user's state")
                 } else {
-                    XCTAssertTrue(self?.userB.score.totalRight == user.score.totalRight, "Round started should not effect user's state")
-                    XCTAssertTrue(self?.userB.score.totalWrong == user.score.totalWrong, "Round started should not effect user's state")
+                    XCTAssertTrue(self?.userB.score.totalRight == user?.score.totalRight, "Round started should not effect user's state")
+                    XCTAssertTrue(self?.userB.score.totalWrong == user?.score.totalWrong, "Round started should not effect user's state")
                 }
                 break
             default:
                 XCTAssertTrue(false, "Should not have illegal state")
             }
-        }
-        self.controlPanel.changeStateToRoundStarted(forUserA: self.userA, userB: self.userB)
+            }
+        self.controlPanel.changeStateToRoundStarted()
     }
     
     func testStateChangedForNotAnswered() {
-        self.controlPanel.stateChanged = { [weak self] (state: StateEnum, user: User) in
+        self.controlPanel.stateChanged = { [weak self] (state: StateEnum, user: User?) in
             switch state {
             case .userNotAnswered:
-                XCTAssertTrue(self?.userA.score.totalRight == user.score.totalRight, "No answer should not effect user's state")
-                XCTAssertTrue(self?.userA.score.totalWrong == user.score.totalWrong, "No answer should not effect user's state")
+                XCTAssertTrue(self?.userA.score.totalRight == user?.score.totalRight, "No answer should not effect user's state")
+                XCTAssertTrue(self?.userA.score.totalWrong == user?.score.totalWrong, "No answer should not effect user's state")
                 break
             default:
                 XCTAssertTrue(false, "Should not have illegal state")
             }
         }
-        self.controlPanel.changeStateToNotAnswered(forUser: self.userA)
+        self.controlPanel.changeStateToNotAnswered()
     }
     
     func testStateChangedForAnsweredWrong() {
-        self.controlPanel.stateChanged = { [weak self] (state: StateEnum, user: User) in
+        self.controlPanel.stateChanged = { [weak self] (state: StateEnum, user: User?) in
             switch state {
             case .userAnsweredWrong:
-                XCTAssertTrue(self?.userA.score.totalRight == user.score.totalRight, "Wrong answer should not effect totalRight")
-                XCTAssertFalse(self?.userA.score.totalWrong == user.score.totalWrong, "Wrong answer should change totalWrong")
-                XCTAssertTrue(self?.userA.score.totalWrong == user.score.totalWrong - 1, "Wrong answer should increment totalWrong")
+                XCTAssertTrue(self?.userA.score.totalRight == user?.score.totalRight, "Wrong answer should not effect totalRight")
+                XCTAssertFalse(self?.userA.score.totalWrong == user?.score.totalWrong, "Wrong answer should change totalWrong")
+                XCTAssertTrue(self?.userA.score.totalWrong == (user?.score.totalWrong ?? 0) - 1, "Wrong answer should increment totalWrong")
                 break
             default:
                 XCTAssertTrue(false, "Should not have illegal state")
@@ -76,12 +76,12 @@ class ControlPanelTests: XCTestCase {
     }
     
     func testStateChangedForAnsweredRight() {
-        self.controlPanel.stateChanged = { [weak self] (state: StateEnum, user: User) in
+        self.controlPanel.stateChanged = { [weak self] (state: StateEnum, user: User?) in
             switch state {
             case .userAnsweredRight:
-                XCTAssertFalse(self?.userA.score.totalRight == user.score.totalRight, "Right answer should change totalRight")
-                XCTAssertTrue(self?.userA.score.totalRight == user.score.totalRight - 1, "Right answer should increment total totalRight")
-                XCTAssertTrue(self?.userA.score.totalWrong == user.score.totalWrong, "Right answer should not effect totalWrong")
+                XCTAssertFalse(self?.userA.score.totalRight == user?.score.totalRight, "Right answer should change totalRight")
+                XCTAssertTrue(self?.userA.score.totalRight == (user?.score.totalRight ?? 0) - 1, "Right answer should increment total totalRight")
+                XCTAssertTrue(self?.userA.score.totalWrong == user?.score.totalWrong, "Right answer should not effect totalWrong")
                 break
             default:
                 XCTAssertTrue(false, "Should not have illegal state")

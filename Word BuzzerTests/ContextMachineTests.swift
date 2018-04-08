@@ -22,9 +22,8 @@ class ContextMachineTests: XCTestCase {
     }
     
     func testChangeToUserNotAnswered() {
-        let user = User(id: 1, name: "Swift", score: Score(totalRight: 1, totalWrong: 2))
-        self.context.changeStateToNotAnswered(forUser: user)
-        XCTAssertTrue(self.context.state.getUser().score == Score(totalRight: 1, totalWrong: 2), "Should not change the score")
+        self.context.changeStateToNotAnswered()
+        XCTAssertTrue(self.context.state.getUser() == nil, "Should not change the score")
         XCTAssertTrue(self.context.state.getMessage() == nil)
     }
     
