@@ -136,7 +136,7 @@ class ViewController: UIViewController {
     }
 
     func showResult() {
-        let actionSheetController: UIAlertController = UIAlertController(title: "Game Over!", message: "You can see the final scores in the background )", preferredStyle: .alert)
+        let actionSheetController: UIAlertController = UIAlertController(title: "Game Over!", message: "We are all winners in a greater scheme of things )", preferredStyle: .alert)
         let saveActionButton = UIAlertAction(title: "Ok", style: .default)
         { _ in
             self .dismiss(animated: true, completion: nil)
@@ -178,6 +178,7 @@ class ViewController: UIViewController {
             }
         }
         
+        // I wasn't sure how to transform properly and user constraints together, this was a temporary dirty workaround
         self.wordTwo.translatesAutoresizingMaskIntoConstraints = false
     }
 }
