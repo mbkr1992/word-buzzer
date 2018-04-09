@@ -35,6 +35,8 @@
 		9A4FFE2E207A91A2004C4A95 /* AnimationForView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A4FFE2C207A91A2004C4A95 /* AnimationForView.swift */; };
 		9A4FFE30207A9208004C4A95 /* RandomObjectArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A4FFE2F207A9208004C4A95 /* RandomObjectArray.swift */; };
 		9A4FFE31207A9208004C4A95 /* RandomObjectArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A4FFE2F207A9208004C4A95 /* RandomObjectArray.swift */; };
+		9A4FFE33207ADB6A004C4A95 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A4FFE32207ADB6A004C4A95 /* Helper.swift */; };
+		9A4FFE34207ADB6A004C4A95 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A4FFE32207ADB6A004C4A95 /* Helper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +73,7 @@
 		9A4FFE28207A8D4B004C4A95 /* BuzzerForButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuzzerForButton.swift; sourceTree = "<group>"; };
 		9A4FFE2C207A91A2004C4A95 /* AnimationForView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationForView.swift; sourceTree = "<group>"; };
 		9A4FFE2F207A9208004C4A95 /* RandomObjectArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomObjectArray.swift; sourceTree = "<group>"; };
+		9A4FFE32207ADB6A004C4A95 /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -162,6 +165,7 @@
 				9A4FFE08207961AD004C4A95 /* DBHandler.swift */,
 				9A4FFE1B20799A4D004C4A95 /* User.swift */,
 				9A4FFE23207A369E004C4A95 /* ControlPanel.swift */,
+				9A4FFE32207ADB6A004C4A95 /* Helper.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -279,6 +283,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9A4FFE33207ADB6A004C4A95 /* Helper.swift in Sources */,
 				9A4FFE1620796D32004C4A95 /* WordGenerator.swift in Sources */,
 				9A4FFE29207A8D4B004C4A95 /* BuzzerForButton.swift in Sources */,
 				9A4FFE09207961AD004C4A95 /* DBHandler.swift in Sources */,
@@ -297,6 +302,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9A4FFE1720796D32004C4A95 /* WordGenerator.swift in Sources */,
+				9A4FFE34207ADB6A004C4A95 /* Helper.swift in Sources */,
 				9A4FFE222079A080004C4A95 /* ContextMachineTests.swift in Sources */,
 				9A4FFE1920796DC5004C4A95 /* WordGeneratorTests.swift in Sources */,
 				9A4FFE25207A369E004C4A95 /* ControlPanel.swift in Sources */,

@@ -9,7 +9,7 @@
 import UIKit
 
 enum Constant {
-    static let limit = 5
+    static let limit = 4
 }
 
 class ViewController: UIViewController {
@@ -40,8 +40,8 @@ class ViewController: UIViewController {
     var userAlpha: User! {
         didSet {
             self.scoreUserAlpha.text = """
-                Total right: \(userAlpha.score.totalRight)
-                Total wrong: \(userAlpha.score.totalWrong)
+            Total right: \(userAlpha.score.totalRight)
+            Total wrong: \(userAlpha.score.totalWrong)
             """
             
             self.buzzerForUserAlpha.setTitle(userAlpha.name, for: UIControlState.normal)
@@ -51,8 +51,8 @@ class ViewController: UIViewController {
     var userBeta: User! {
         didSet {
             self.scoreUserBeta.text = """
-                Total right: \(userBeta.score.totalRight)
-                Total wrong: \(userBeta.score.totalWrong)
+            Total right: \(userBeta.score.totalRight)
+            Total wrong: \(userBeta.score.totalWrong)
             """
             
             self.buzzerForUserBeta.setTitle(userBeta.name, for: UIControlState.normal)
@@ -90,6 +90,70 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.configureStaticProperties()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        // Start game
+        self.newRound()
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+    
+    @IBAction func userAlphaTapped(_ sender: Any) {
+        if self.buzzerPressed == true {
+            return
+        }
+        
+        self.buzzerPressed = true
+        if (Helper.checkAnswer(wordOne: self.currentWord, wordTwo: self.currentPassingWord)) {
+            self.controlPanel.changeStateToAnsweredRight(forUser: self.userAlpha)
+        } else {
+            self.controlPanel.changeStateToAnsweredWrong(forUser: self.userAlpha)
+            //            self.buzzerForUserAlpha.shake()
+        }
+    }
+    
+    @IBAction func userBetaTapped(_ sender: Any) {
+        if self.buzzerPressed == true {
+            return
+        }
+        
+        self.buzzerPressed = true
+        if (Helper.checkAnswer(wordOne: self.currentWord, wordTwo: self.currentPassingWord)) {
+            self.controlPanel.changeStateToAnsweredRight(forUser: self.userBeta)
+        } else {
+            self.controlPanel.changeStateToAnsweredWrong(forUser: self.userBeta)
+            //            self.buzzerForUserBeta.shake()
+        }
+    }
+    
+    @IBAction func dismissController(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+
+    func showResult() {
+        let actionSheetController: UIAlertController = UIAlertController(title: "Game Over!", message: "You can see the final scores in the background )", preferredStyle: .alert)
+        let saveActionButton = UIAlertAction(title: "Ok", style: .default)
+        { _ in
+            self .dismiss(animated: true, completion: nil)
+        }
+        actionSheetController.addAction(saveActionButton)
+        self.present(actionSheetController, animated: true, completion: nil)
+    }
+    
+    /**
+     Configures the initial state of one-time properties
+     */
+    func configureStaticProperties() {
+        self.userAlpha = User(id: 1, name: "Swift", score: Score())
+        self.userBeta = User(id: 2, name: "ObjC", score: Score())
+        self.totalRounds = 10
+        self.currentRound = 0
+        
         self.controlPanel.stateChanged = { (state: StateEnum, user: User?) in
             if let u = user {
                 self.updateUser(withUser: u)
@@ -113,52 +177,21 @@ class ViewController: UIViewController {
                 break
             }
         }
-        self.newRound()
+        
+        self.wordTwo.translatesAutoresizingMaskIntoConstraints = false
     }
+}
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-    
-    @IBAction func userAlphaTapped(_ sender: Any) {
-        if self.buzzerPressed == true {
-            return
-        }
-        
-        self.buzzerPressed = true
-        if (self.checkAnswer(wordOne: self.currentWord, wordTwo: self.currentPassingWord)) {
-            self.controlPanel.changeStateToAnsweredRight(forUser: self.userAlpha)
-        } else {
-            self.controlPanel.changeStateToAnsweredWrong(forUser: self.userAlpha)
-//            self.buzzerForUserAlpha.shake()
-        }
-    }
-    
-    @IBAction func userBetaTapped(_ sender: Any) {
-        if self.buzzerPressed == true {
-            return
-        }
-        
-        self.buzzerPressed = true
-        if (self.checkAnswer(wordOne: self.currentWord, wordTwo: self.currentPassingWord)) {
-            self.controlPanel.changeStateToAnsweredRight(forUser: self.userBeta)
-        } else {
-            self.controlPanel.changeStateToAnsweredWrong(forUser: self.userBeta)
-//            self.buzzerForUserBeta.shake()
-        }
-    }
-    
-    @IBOutlet weak var dismissGameController: UIButton!
-    func checkAnswer(wordOne: Dictionary<String, String>, wordTwo: Dictionary<String, String>) -> Bool {
-        return wordOne["text_eng"] == wordTwo["text_eng"]
-    }
-    
+extension ViewController {
+    /**
+     Starts off with a new round, finishes the game if all rounds are player
+     */
     func newRound() {
-        if self.totalRounds == self.currentRound {
+        if Helper.isGameOver(rounds: self.totalRounds, round: self.currentRound) {
             self.controlPanel.changeStateToGameEnded()
             return
         }
-
+        
         self.buzzerForUserAlpha.deactivate()
         self.buzzerForUserBeta.deactivate()
         
@@ -181,10 +214,13 @@ class ViewController: UIViewController {
         }
     }
     
+    /**
+     Continues the moving label animation unless user presses a buzzer
+     */
     func continueRound() {
         self.buzzerForUserAlpha.activate()
         self.buzzerForUserBeta.activate()
-        self.wordTwo.randomMovement(rect: self.view.frame) { (animated: Bool) in
+        self.wordTwo.randomMovement(withDuration:4.0, rect: self.view.frame) { (animated: Bool) in
             if animated {
                 if self.buzzerPressed == false {
                     self.currentPassingWord = self.currentWords?.randomObject()
@@ -194,6 +230,10 @@ class ViewController: UIViewController {
         }
     }
     
+    /**
+     Updates the userWithTheState.user
+     - paramter user: the updated state.user
+     */
     func updateUser(withUser user: User) {
         if self.userAlpha == user {
             self.userAlpha = user
@@ -201,19 +241,4 @@ class ViewController: UIViewController {
             self.userBeta = user
         }
     }
-    
-    func showResult() {
-        
-        print("Game ended")
-    }
-    
-    func configureStaticProperties() {
-        self.userAlpha = User(id: 1, name: "Swift", score: Score())
-        self.userBeta = User(id: 2, name: "ObjC", score: Score())
-        self.totalRounds = 10
-        self.currentRound = 0
-        
-        self.wordTwo.translatesAutoresizingMaskIntoConstraints = false
-    }
 }
-

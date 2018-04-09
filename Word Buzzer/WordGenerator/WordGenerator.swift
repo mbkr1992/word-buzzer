@@ -20,6 +20,10 @@ class WordGenerator {
         self.limit = limit
     }
     
+    /**
+     selects the next word in words array
+     - Returns: A tuple where first item is the next item, and second item is the randomized array
+     */
     func next() -> (BabbelWord, Array<BabbelWord>)? {
         var result: (BabbelWord, Array<BabbelWord>)?
         if self.words.count == self.current || self.limit >= self.words.count {
