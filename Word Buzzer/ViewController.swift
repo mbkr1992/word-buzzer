@@ -9,7 +9,7 @@
 import UIKit
 
 enum Constant {
-    static let limit = 4
+    static let limit = 3
 }
 
 class ViewController: UIViewController {
